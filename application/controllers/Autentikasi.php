@@ -53,7 +53,7 @@ class Autentikasi extends CI_Controller {
 					redirect('admin/beranda','refresh');
 				}else {
 					$this->session->set_userdata($userdata);
-					redirect('beranda','refresh');
+					redirect('user/beranda','refresh');
 				}
 			} else {
 				echo "<script>alert('Informasi Akun yang Anda Masukkan Salah') </script>";
