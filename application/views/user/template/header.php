@@ -47,11 +47,16 @@
               <i class="material-icons">dashboard</i>
               <p>Beranda</p>
             </a>
-          </li><li class="nav-item <?php echo ($this->uri->segment(1) == 'rencanakegiatank1') ? 'active':''; ?>">
-            <a class="nav-link" href="<?php echo site_url('rencanapenerimaank1') ?>">
+          <li class="nav-item <?php echo ($this->uri->segment(2) == 'rkask1/penerimaan') ? 'active':''; ?> ">
+            <a class="nav-link" href="<?php echo site_url('user/rkask1/penerimaan')?>">
               <i class="material-icons">content_paste</i>
-              <!-- <i class="material-icons">assessment</i> -->
-              <p>RKAS K1</p>
+              <p>Rencana Penerimaan K1</p>
+            </a>
+          </li>
+          <li class="nav-item <?php echo ($this->uri->segment(2) == 'rkask1/pengeluaran') ? 'active':''; ?> ">
+            <a class="nav-link" href="<?php echo site_url('user/rkask1/pengeluaran')?>">
+              <i class="material-icons">content_paste</i>
+              <p>Rencana Pengeluaran K1</p>
             </a>
           </li>
           <li class="nav-item <?php echo ($this->uri->segment(1) == 'sumberdana') ? 'active':''; ?>">
