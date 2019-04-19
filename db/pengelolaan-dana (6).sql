@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 08, 2019 at 03:12 PM
+-- Generation Time: Apr 19, 2019 at 05:42 PM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -21,6 +21,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `pengelolaan-dana`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `detail_sub_kegiatan_k2`
+--
+
+CREATE TABLE `detail_sub_kegiatan_k2` (
+  `id_detail_sub_kegiatan_k2` int(11) NOT NULL,
+  `uraian_kegiatan` varchar(255) NOT NULL,
+  `jumlah` int(10) NOT NULL,
+  `satuan` varchar(100) NOT NULL,
+  `harga_satuan` int(10) NOT NULL,
+  `total` int(10) NOT NULL,
+  `bantuan_operasional_sekolah` enum('pusat','pembelajaran','tns','tms','kelas olahraga') DEFAULT NULL,
+  `nominal_bantuan_operasional_sekolah` int(10) DEFAULT NULL,
+  `bantuan_lain` enum('subsidi un','bantuan dll','grand sekolah rujukan') DEFAULT NULL,
+  `nominal_bantuan_lain` int(10) DEFAULT NULL,
+  `id_sub_kegiatan_k2` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `detail_sub_kegiatan_k2`
+--
+
+INSERT INTO `detail_sub_kegiatan_k2` (`id_detail_sub_kegiatan_k2`, `uraian_kegiatan`, `jumlah`, `satuan`, `harga_satuan`, `total`, `bantuan_operasional_sekolah`, `nominal_bantuan_operasional_sekolah`, `bantuan_lain`, `nominal_bantuan_lain`, `id_sub_kegiatan_k2`) VALUES
+(1, 'Pengadaan Formulir dan Map Pendaftaran', 600, 'Bendel', 5000, 3000000, 'pusat', 3000000, NULL, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -111,6 +138,13 @@ CREATE TABLE `pengeluaran_k1` (
   `jumlah` int(10) NOT NULL,
   `jenis_pengeluaran` enum('program sekolah','belanja lainnya') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pengeluaran_k1`
+--
+
+INSERT INTO `pengeluaran_k1` (`id_pengeluaran`, `uraian`, `jumlah`, `jenis_pengeluaran`) VALUES
+(1, 'Pengembangan Standar Kompetensi Lulusan', 2000000, 'program sekolah');
 
 -- --------------------------------------------------------
 
@@ -387,9 +421,35 @@ INSERT INTO `status_sekolah` (`id_status_sekolah`, `nama_status_sekolah`) VALUES
 (1, 'Negeri'),
 (2, 'Swasta');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sub_kegiatan_k2`
+--
+
+CREATE TABLE `sub_kegiatan_k2` (
+  `id_sub_kegiatan_k2` int(11) NOT NULL,
+  `uraian_kegiatan` varchar(255) NOT NULL,
+  `id_pengeluaran` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sub_kegiatan_k2`
+--
+
+INSERT INTO `sub_kegiatan_k2` (`id_sub_kegiatan_k2`, `uraian_kegiatan`, `id_pengeluaran`) VALUES
+(1, 'Penerimaan Peserta Didik Baruu', 1),
+(2, 'Peningkatan Prestasi Bidang Akademik', 1);
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `detail_sub_kegiatan_k2`
+--
+ALTER TABLE `detail_sub_kegiatan_k2`
+  ADD PRIMARY KEY (`id_detail_sub_kegiatan_k2`);
 
 --
 -- Indexes for table `form_k3`
@@ -450,8 +510,20 @@ ALTER TABLE `status_sekolah`
   ADD PRIMARY KEY (`id_status_sekolah`);
 
 --
+-- Indexes for table `sub_kegiatan_k2`
+--
+ALTER TABLE `sub_kegiatan_k2`
+  ADD PRIMARY KEY (`id_sub_kegiatan_k2`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `detail_sub_kegiatan_k2`
+--
+ALTER TABLE `detail_sub_kegiatan_k2`
+  MODIFY `id_detail_sub_kegiatan_k2` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `form_k3`
@@ -475,7 +547,7 @@ ALTER TABLE `penerimaan_k1`
 -- AUTO_INCREMENT for table `pengeluaran_k1`
 --
 ALTER TABLE `pengeluaran_k1`
-  MODIFY `id_pengeluaran` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pengeluaran` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pengguna`
@@ -488,6 +560,12 @@ ALTER TABLE `pengguna`
 --
 ALTER TABLE `sekolah`
   MODIFY `id_sekolah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+
+--
+-- AUTO_INCREMENT for table `sub_kegiatan_k2`
+--
+ALTER TABLE `sub_kegiatan_k2`
+  MODIFY `id_sub_kegiatan_k2` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

@@ -59,6 +59,12 @@
               <p>Rencana Pengeluaran K1</p>
             </a>
           </li>
+          <li class="nav-item <?php echo ($this->uri->segment(2) == 'rkask2') ? 'active':''; ?> ">
+            <a class="nav-link" href="<?php echo site_url('user/rkask2')?>">
+              <i class="material-icons">content_paste</i>
+              <p>RKAS K2</p>
+            </a>
+          </li>
           <li class="nav-item <?php echo ($this->uri->segment(1) == 'sumberdana') ? 'active':''; ?>">
             <a class="nav-link" href="<?php echo site_url('user/sumberdana') ?>">
               <i class="material-icons">content_paste</i>
@@ -70,12 +76,6 @@
             <a class="nav-link" href="<?php echo site_url('user/pengeluaran') ?>">
               <i class="material-icons">assessment</i>
               <p>Pengeluaran</p>
-            </a>
-          </li>
-          <li class="nav-item <?php echo ($this->uri->segment(1) == 'kegiatan' || $this->uri->segment(1) == 'detail_kegiatan') ? 'active':''; ?> ">
-            <a class="nav-link" href="<?php echo site_url('user/kegiatan')?>">
-              <i class="material-icons">directions_run</i>
-              <p>Kegiatan</p>
             </a>
           </li>
           <li class="nav-item <?php echo ($this->uri->segment(1) == 'penggunaan' ) ? 'active':''; ?> ">
