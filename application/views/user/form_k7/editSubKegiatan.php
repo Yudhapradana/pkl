@@ -8,7 +8,7 @@
             <p class="card-category">menambahkan informasi detail tentang RKAS K2</p>
           </div>
           <div class="card-body">
-            <form action="<?php base_url('user/rkask2/editSubKegiatan/'). $this->uri->segment(4) ?>" method="post" enctype="multipart/form-data">
+            <form action="<?php base_url('user/rkask2/createSubKegiatan/'). $this->uri->segment(4) ?>" method="post" enctype="multipart/form-data">
               <?php foreach ($get as $key => $value): ?>
               <div class="form-group">
                 <label for="uraian">Uraian</label>

@@ -3,8 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class K2_model extends CI_Model {
 
-	public function getPengeluaran()
+	public function getPengeluaran($id)
 	{
+		$this->db->where('id_sekolah', $id);
 		$query = $this->db->get('pengeluaran_k1');
     	return $query->result();
 	}
@@ -55,6 +56,7 @@ class K2_model extends CI_Model {
 	public function getDetailSubKegiatan($id)
 	{
 		$this->db->where('id_sub_kegiatan_k2', $id);
+		$this->db->where('status', '0');
 		$query = $this->db->get('detail_sub_kegiatan_k2');
     	return $query->result();
 	}

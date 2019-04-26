@@ -18,10 +18,10 @@ class RkasK2 extends CI_Controller {
 		}
 	}
 
-	public function index()
+	public function index($id)
 	{
 		$data['page'] = 'Rencana Kegiatan dan Anggaran Sekolah (RKAS) K2';
-		$data['pengeluaran'] = $this->k2_model->getPengeluaran();
+		$data['pengeluaran'] = $this->k2_model->getPengeluaran($id);
 
 		$this->load->view('user/template/header', $data);
 		$this->load->view('user/form_k2/indexPengeluaran', $data);

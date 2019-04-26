@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2019 at 05:42 PM
+-- Generation Time: Apr 26, 2019 at 04:52 PM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -39,15 +39,19 @@ CREATE TABLE `detail_sub_kegiatan_k2` (
   `nominal_bantuan_operasional_sekolah` int(10) DEFAULT NULL,
   `bantuan_lain` enum('subsidi un','bantuan dll','grand sekolah rujukan') DEFAULT NULL,
   `nominal_bantuan_lain` int(10) DEFAULT NULL,
-  `id_sub_kegiatan_k2` int(10) NOT NULL
+  `id_sub_kegiatan_k2` int(10) NOT NULL,
+  `realisasi` int(10) DEFAULT NULL,
+  `bukti_transaksi` varchar(255) DEFAULT NULL,
+  `status` enum('0','1') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_sub_kegiatan_k2`
 --
 
-INSERT INTO `detail_sub_kegiatan_k2` (`id_detail_sub_kegiatan_k2`, `uraian_kegiatan`, `jumlah`, `satuan`, `harga_satuan`, `total`, `bantuan_operasional_sekolah`, `nominal_bantuan_operasional_sekolah`, `bantuan_lain`, `nominal_bantuan_lain`, `id_sub_kegiatan_k2`) VALUES
-(1, 'Pengadaan Formulir dan Map Pendaftaran', 600, 'Bendel', 5000, 3000000, 'pusat', 3000000, NULL, 0, 1);
+INSERT INTO `detail_sub_kegiatan_k2` (`id_detail_sub_kegiatan_k2`, `uraian_kegiatan`, `jumlah`, `satuan`, `harga_satuan`, `total`, `bantuan_operasional_sekolah`, `nominal_bantuan_operasional_sekolah`, `bantuan_lain`, `nominal_bantuan_lain`, `id_sub_kegiatan_k2`, `realisasi`, `bukti_transaksi`, `status`) VALUES
+(1, 'Pengadaan Formulir dan Map Pendaftarannnnn', 20, 'Bendel', 500, 10000, 'pusat', 3000000, NULL, 0, 1, 290000, NULL, '0'),
+(2, 'tambahan', 0, '', 0, 0, NULL, NULL, NULL, NULL, 1, 90000, NULL, '1');
 
 -- --------------------------------------------------------
 
@@ -123,7 +127,8 @@ CREATE TABLE `penerimaan_k1` (
   `id_penerimaan` int(10) NOT NULL,
   `uraian` varchar(255) NOT NULL,
   `jumlah` int(10) NOT NULL,
-  `jenis_penerimaan` enum('sisa tahun lalu','pendapatan rutin','bantuan operasional sekolah','bantuan','pendapatan asli sekolah') NOT NULL
+  `jenis_penerimaan` enum('sisa tahun lalu','pendapatan rutin','bantuan operasional sekolah','bantuan','pendapatan asli sekolah') NOT NULL,
+  `id_sekolah` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -136,15 +141,19 @@ CREATE TABLE `pengeluaran_k1` (
   `id_pengeluaran` int(10) NOT NULL,
   `uraian` varchar(255) NOT NULL,
   `jumlah` int(10) NOT NULL,
-  `jenis_pengeluaran` enum('program sekolah','belanja lainnya') NOT NULL
+  `jenis_pengeluaran` enum('program sekolah','belanja lainnya') NOT NULL,
+  `id_sekolah` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pengeluaran_k1`
 --
 
-INSERT INTO `pengeluaran_k1` (`id_pengeluaran`, `uraian`, `jumlah`, `jenis_pengeluaran`) VALUES
-(1, 'Pengembangan Standar Kompetensi Lulusan', 2000000, 'program sekolah');
+INSERT INTO `pengeluaran_k1` (`id_pengeluaran`, `uraian`, `jumlah`, `jenis_pengeluaran`, `id_sekolah`) VALUES
+(1, 'Pengembangan Standar Kompetensi Lulusan', 4000000, 'program sekolah', 15),
+(2, 'Penerimaan Peserta Didik Baru', 20, 'belanja lainnya', 15),
+(3, 'tes', 10000, 'belanja lainnya', 15),
+(4, 'arema', 1000000, 'belanja lainnya', 15);
 
 -- --------------------------------------------------------
 
@@ -438,7 +447,7 @@ CREATE TABLE `sub_kegiatan_k2` (
 --
 
 INSERT INTO `sub_kegiatan_k2` (`id_sub_kegiatan_k2`, `uraian_kegiatan`, `id_pengeluaran`) VALUES
-(1, 'Penerimaan Peserta Didik Baruu', 1),
+(1, 'Penerimaan Peserta Didik Baruuu', 1),
 (2, 'Peningkatan Prestasi Bidang Akademik', 1);
 
 --
@@ -523,7 +532,7 @@ ALTER TABLE `sub_kegiatan_k2`
 -- AUTO_INCREMENT for table `detail_sub_kegiatan_k2`
 --
 ALTER TABLE `detail_sub_kegiatan_k2`
-  MODIFY `id_detail_sub_kegiatan_k2` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_detail_sub_kegiatan_k2` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `form_k3`
@@ -547,7 +556,7 @@ ALTER TABLE `penerimaan_k1`
 -- AUTO_INCREMENT for table `pengeluaran_k1`
 --
 ALTER TABLE `pengeluaran_k1`
-  MODIFY `id_pengeluaran` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pengeluaran` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `pengguna`

@@ -10,7 +10,7 @@
             <p class="card-category">menampilkan informasi tentang RKAS format Bos-K1</p>
           </div>
           <div class="col-md-3">
-              <a href="<?php echo base_url('user/rkask1/createPenerimaan/'.$this->session->id_sekolah) ?>" rel="tooltip" title="Tambah" class="btn btn-primary">
+              <a href="<?php echo base_url('user/rkask7/createDetailSubKegiatan/') . $this->uri->segment(4)   ?>" rel="tooltip" title="Tambah" class="btn btn-primary">
                 <i class="material-icons">add</i>
               </a>
             </div>
@@ -26,27 +26,30 @@
                     </th>
                     <th class="th-sm">Uraian
                     </th>
-                    <th class="th-sm">Jumlah
+                    <th class="th-sm">Total K2
                     </th>
-                    <th class="th-sm">Kategori
+                    <th class="th-sm">Realisasi
                     </th>
                     <th class="th-sm">Aksi
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($penerimaan as $key => $value): ?>
+                  <?php foreach ($detail as $key => $value): ?>
                     <tr>
                       <td><?php echo $key+1 ?></td>
-                      <td><?php echo $value->uraian ?></td>
-                      <td><?php echo $value->jumlah ?></td>
-                      <td><?php echo $value->jenis_penerimaan ?></td>
-                                            <td>
-                        
-                        <a href="<?php echo base_url('user/rkask1/editPenerimaan/') . $value->id_penerimaan; ?>" rel="tooltip" title="Edit Penerimaan" class="btn btn-sm btn-info">
-                          <i class="material-icons">edit</i>
+                      <td><?php echo $value->uraian_kegiatan ?></td>
+                      <td><?php echo $value->total ?></td>
+                      <td><?php if ($value->realisasi == null) {
+                              echo "0";
+                      }else{
+                        echo $value->realisasi;
+                      } ?></td>
+                      <td>  
+                        <a href="<?php echo base_url('user/rkask7/editDetailSubKegiatan/' . $this->uri->segment(4). '/') . $value->id_detail_sub_kegiatan_k2; ?>" rel="tooltip" title="Input Realisasi" class="btn btn-sm btn-info">
+                          <i class="material-icons">assignment_turned_in</i>
                         </a>
-                        <a href="<?php echo base_url('user/rkask1/deletePenerimaan/') . $value->id_penerimaan; ?>" rel="tooltip" title="Hapus" class="btn btn-sm btn-danger">
+                        <a href="<?php echo base_url('user/rkask7/deleteDetailSubKegiatan/'. $this->uri->segment(4). '/') . $value->id_detail_sub_kegiatan_k2; ?>" rel="tooltip" title="Hapus" class="btn btn-sm btn-danger">
                           <i class="material-icons">delete</i>
                         </a>
                       </td>
@@ -56,6 +59,10 @@
                 <tfoot class="text-primary">
                   <tr>
                     <th>No
+                    </th>
+                    <th>Uraian
+                    </th>
+                    <th>Total K1
                     </th>
                     <th>Uraian
                     </th>
@@ -75,7 +82,7 @@
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Informasi Detail Kegiatan</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Informasi Detail Sub Kegiatan</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -93,7 +100,7 @@
 <script type="text/javascript">
 function openModal(id) {
   $.ajax({
-    url:"<?php echo base_url('rencanapenerimaank1/view/'); ?>"+id,
+    url:"<?php echo base_url('user/rkask2/getDataDetailSubKegiatan/'); ?>"+id,
     method: 'post',
     data:null
   }).done(function(data) {

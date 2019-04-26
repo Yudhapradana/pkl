@@ -64,6 +64,12 @@
                     </th>
                     <th>Uraian
                     </th>
+                    <th>Jumlah
+                    </th>
+                    <th>Harga Satuan
+                    </th>
+                    <th>Total
+                    </th>
                     <th>Aksi
                     </th>
                   </tr>

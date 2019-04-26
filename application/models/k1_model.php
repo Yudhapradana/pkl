@@ -3,18 +3,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class K1_model extends CI_Model {
 
-	public function getPenerimaan()
+	public function getPenerimaan($id)
 	{
+		$this->db->where('id_sekolah', $id);
 		$query = $this->db->get('penerimaan_k1');
     	return $query->result();
 	}
 
-	public function createPenerimaan()
+	public function createPenerimaan($id)
 	{
 		$data = array(
       	'uraian' => $this->input->post('uraian'),
       	'jumlah' => $this->input->post('jumlah'),
       	'jenis_penerimaan' => $this->input->post('kategori'),
+      	'id_sekolah' => $id,
     	);
 
     	$this->db->insert('penerimaan_k1', $data);
@@ -45,18 +47,20 @@ class K1_model extends CI_Model {
 		return $query->result();
 	}
 
-	public function getPengeluaran()
+	public function getPengeluaran($id)
 	{
+		$this->db->where('id_sekolah', $id);
 		$query = $this->db->get('pengeluaran_k1');
     	return $query->result();
 	}
 
-	public function createPengeluaran()
+	public function createPengeluaran($id)
 	{
 		$data = array(
       	'uraian' => $this->input->post('uraian'),
       	'jumlah' => $this->input->post('jumlah'),
       	'jenis_pengeluaran' => $this->input->post('kategori'),
+      	'id_sekolah' => $id,
     	);
 
     	$this->db->insert('pengeluaran_k1', $data);

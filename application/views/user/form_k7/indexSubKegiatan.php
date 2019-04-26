@@ -6,14 +6,14 @@
           <div class="card-header card-header-warning">
             <div class="row">
               <div class="col-md-9">
-              <h4 class="card-title">Rencana Kegiatan dan Anggaran Sekolah</h4>
-            <p class="card-category">menampilkan informasi tentang RKAS format Bos-K1</p>
+              <h4 class="card-title">Realisasi Kegiatan dan Anggaran Sekolah</h4>
+            <p class="card-category">menampilkan informasi format Bos-K7</p>
           </div>
-          <div class="col-md-3">
-              <a href="<?php echo base_url('user/rkask1/createPenerimaan/'.$this->session->id_sekolah) ?>" rel="tooltip" title="Tambah" class="btn btn-primary">
+<!--           <div class="col-md-3">
+              <a href="<?php echo base_url('user/rkask7/createSubKegiatan/') . $this->uri->segment(4)   ?>" rel="tooltip" title="Tambah" class="btn btn-primary">
                 <i class="material-icons">add</i>
               </a>
-            </div>
+            </div> -->
           </div>
           </div>
         </div>
@@ -26,28 +26,18 @@
                     </th>
                     <th class="th-sm">Uraian
                     </th>
-                    <th class="th-sm">Jumlah
-                    </th>
-                    <th class="th-sm">Kategori
-                    </th>
                     <th class="th-sm">Aksi
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($penerimaan as $key => $value): ?>
+                  <?php foreach ($sub as $key => $value): ?>
                     <tr>
-                      <td><?php echo $key+1 ?></td>
-                      <td><?php echo $value->uraian ?></td>
-                      <td><?php echo $value->jumlah ?></td>
-                      <td><?php echo $value->jenis_penerimaan ?></td>
-                                            <td>
-                        
-                        <a href="<?php echo base_url('user/rkask1/editPenerimaan/') . $value->id_penerimaan; ?>" rel="tooltip" title="Edit Penerimaan" class="btn btn-sm btn-info">
-                          <i class="material-icons">edit</i>
-                        </a>
-                        <a href="<?php echo base_url('user/rkask1/deletePenerimaan/') . $value->id_penerimaan; ?>" rel="tooltip" title="Hapus" class="btn btn-sm btn-danger">
-                          <i class="material-icons">delete</i>
+                      <td><?php echo $value->id_pengeluaran.".".$key ?></td>
+                      <td><?php echo $value->uraian_kegiatan ?></td>
+                      <td>  
+                        <a href="<?php echo base_url('user/rkask7/getDetailSubKegiatan/'). $value->id_sub_kegiatan_k2; ?>" rel="tooltip" title="Detail" class="btn btn-sm btn-success">
+                          <i class="material-icons">dns</i>
                         </a>
                       </td>
                     </tr>
@@ -69,7 +59,7 @@
         </div>
       </div>
     </div>
-    .</div>
+    </div>
   </div>
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
@@ -81,7 +71,6 @@
         </button>
       </div>
       <div class="modal-body" id="modal-content">
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>

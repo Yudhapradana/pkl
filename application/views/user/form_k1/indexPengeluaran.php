@@ -10,7 +10,7 @@
             <p class="card-category">menampilkan informasi tentang RKAS format Bos-K1</p>
           </div>
           <div class="col-md-3">
-              <a href="<?php echo base_url('user/rkask1/createPengeluaran/') ?>" rel="tooltip" title="Tambah" class="btn btn-primary">
+              <a href="<?php echo base_url('user/rkask1/createPengeluaran/'.$this->session->id_sekolah) ?>" rel="tooltip" title="Tambah" class="btn btn-primary">
                 <i class="material-icons">add</i>
               </a>
             </div>
