@@ -42,52 +42,64 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item <?php echo ($this->uri->segment(2) == 'beranda') ? 'active':''; ?>">
-            <a class="nav-link" href="<?php echo site_url('admin/beranda') ?>">
+          <li class="nav-item <?php echo ($this->uri->segment(1) == 'beranda') ? 'active':''; ?>">
+            <a class="nav-link" href="<?php echo site_url('user/beranda') ?>">
               <i class="material-icons">dashboard</i>
               <p>Beranda</p>
             </a>
-          </li>
-          <li class="nav-item <?php echo ($this->uri->segment(1) == 'rkask1/') ? 'active':''; ?> ">
-            <a class="nav-link" href="<?php echo site_url('admin/rkask1/index/')?>">
+          <li class="nav-item <?php echo ($this->uri->segment(2) == 'rkask1/penerimaan') ? 'active':''; ?> ">
+            <a class="nav-link" href="<?php echo site_url('user/rkask1/penerimaan/'. $this->session->id_sekolah)?>">
               <i class="material-icons">content_paste</i>
-              <p>RKAS K1</p>
+              <p>Rencana Penerimaan K1</p>
+            </a>
+          </li>
+          <li class="nav-item <?php echo ($this->uri->segment(2) == 'rkask1/pengeluaran') ? 'active':''; ?> ">
+            <a class="nav-link" href="<?php echo site_url('user/rkask1/pengeluaran/'.$this->session->id_sekolah)?>">
+              <i class="material-icons">content_paste</i>
+              <p>Rencana Pengeluaran K1</p>
             </a>
           </li>
           <li class="nav-item <?php echo ($this->uri->segment(2) == 'rkask2') ? 'active':''; ?> ">
-            <a class="nav-link" href="<?php echo site_url('admin/rkask2/')?>">
+            <a class="nav-link" href="<?php echo site_url('user/rkask2/index/'.$this->session->id_sekolah)?>">
               <i class="material-icons">content_paste</i>
               <p>RKAS K2</p>
             </a>
           </li>
           <li class="nav-item <?php echo ($this->uri->segment(2) == 'rkask7') ? 'active':''; ?> ">
-            <a class="nav-link" href="<?php echo site_url('admin/rkask7/')?>">
+            <a class="nav-link" href="<?php echo site_url('user/rkask7/index/'.$this->session->id_sekolah)?>">
               <i class="material-icons">content_paste</i>
               <p>RKAS K7</p>
             </a>
           </li>
-          <li class="nav-item <?php echo ($this->uri->segment(2) == 'dana') ? 'active':''; ?> ">
-            <a class="nav-link" href="<?php echo site_url('admin/dana')?>">
+          <li class="nav-item <?php echo ($this->uri->segment(1) == 'sumberdana') ? 'active':''; ?>">
+            <a class="nav-link" href="<?php echo site_url('user/sumberdana') ?>">
               <i class="material-icons">content_paste</i>
-              <p>Laporan Dana</p>
+              <!-- <i class="material-icons">assessment</i> -->
+              <p>Sumber Dana</p>
             </a>
           </li>
-          <li class="nav-item <?php echo ($this->uri->segment(2) == 'jenissumberdana') ? 'active':''; ?> ">
-            <a class="nav-link" href="<?php echo site_url('admin/jenissumberdana')?>">
-              <i class="material-icons">money</i>
-              <p>Jenis Sumber Dana</p>
+          <li class="nav-item <?php echo ($this->uri->segment(1) == 'pengeluaran') ? 'active':''; ?>">
+            <a class="nav-link" href="<?php echo site_url('user/pengeluaran') ?>">
+              <i class="material-icons">assessment</i>
+              <p>Pengeluaran</p>
             </a>
           </li>
-          <li class="nav-item <?php echo ($this->uri->segment(2) == 'sekolah') ? 'active':''; ?> ">
-            <a class="nav-link" href="<?php echo site_url('admin/sekolah')?>">
-              <i class="material-icons">school</i>
-              <p>Sekolah</p>
+          <li class="nav-item <?php echo ($this->uri->segment(1) == 'laporan') ? 'active':''; ?>">
+            <a class="nav-link" href="<?php echo site_url('user/laporan') ?>">
+              <i class="material-icons">library_books</i>
+              <p>Laporan</p>
             </a>
           </li>
-          <li class="nav-item <?php echo ($this->uri->segment(2) == 'pengguna') ? 'active':''; ?> ">
-            <a class="nav-link" href="<?php echo site_url('admin/pengguna')?>">
+          <!-- <li class="nav-item <?php echo ($this->uri->segment(1) == '') ? 'active':''; ?>">
+            <a class="nav-link" href="<?php echo site_url('') ?>">
+              <i class="material-icons">dashboard</i>
+              <p>Beranda</p>
+            </a>
+          </li> -->
+          <li class="nav-item <?php echo ($this->uri->segment(1) == 'pengguna') ? 'active':''; ?> ">
+            <a class="nav-link" href="<?php echo site_url('user/pengguna/')?>">
               <i class="material-icons">person</i>
-              <p>Pengguna</p>
+              <p>Profil Sekolah</p>
             </a>
           </li>
         </ul>
@@ -124,6 +136,7 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="<?php echo base_url('user/pengguna/gantiPass'). $this->session->id_pengguna ?>"  data-toggle="modal" data-target="#gantiPass">Ganti Password</a>
                   <a class="dropdown-item" href="<?php echo base_url('autentikasi/logout')?>">Keluar</a>
                 </div>
               </li>
@@ -131,3 +144,36 @@
           </div>
         </div>
       </nav>
+      <!-- Modal -->
+  <div class="modal fade" id="gantiPass" tabindex="-1" role="dialog" aria-labelledby="gantiPassTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Silahkan Masuk</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="<?php echo base_url().'pengguna/gantiPass/'.$this->session->id_pengguna ?>" method='post'>
+          <div class="form-group">
+            <label for="" class="label">Password Lama</label>
+            <input type="text" name="password" class="form-control" id="recipient-name" autofocus required>
+          </div>
+          <div class="form-group">
+            <label for="" class="label">Password Baru</label>
+            <input type="password" name="password2" class="form-control" id="recipient-name" required>
+          </div>
+          <div class="form-group">
+            <label for="" class="label">Konfirmasi Password</label>
+            <input type="password" name="password3" class="form-control" id="recipient-name" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+          <button type="submit" class="btn btn-primary">Masuk</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>

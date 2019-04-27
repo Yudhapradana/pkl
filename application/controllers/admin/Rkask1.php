@@ -9,28 +9,46 @@ class Rkask1 extends CI_Controller {
 
 		$this->load->library('form_validation');
 		$this->load->model('k1_model');
+		$this->load->model('sekolah_model');
 
 		if (!$this->session->logged_in == TRUE) {
 			redirect('welcome','refresh');
 		}
-		if ($this->session->id_jenis_pengguna == 1 ) {
+		if ($this->session->id_jenis_pengguna == 2 ) {
 			redirect('admin/beranda','refresh');
 		}
 	}
 
 	public function index()
 	{
-		
+		$data['page'] = 'Rencana Kegiatan dan Anggaran Sekolah (RKAS) K1';
+		$data['sekolah'] = $this->sekolah_model->get();
+
+		$this->load->view('admin/template/header', $data);
+		$this->load->view('admin/rkask1/index', $data);
+		$this->load->view('admin/template/footer');	
 	}
 
-	public function penerimaan()
+	public function penerimaan($id)
 	{
-		$data['page'] = 'Rencana Kegiatan dan Anggaran Sekolah (RKAS) K1';
+		$data['page'] = 'Penerimaan (RKAS) K1';
+		$data['penerimaan'] = $this->k1_model->getPenerimaan($id);
+		$data['sekolah'] = $this->sekolah_model->get_by_id($id);
 
-		$data['jenis'] = $this->k1_model->get();
-		$this->load->view('template/header', $data);
-		$this->load->view('rencana_kegiatanK1/index', $data);
-		$this->load->view('template/footer');
+		$this->load->view('admin/template/header', $data);
+		$this->load->view('admin/rkask1/indexpenerimaan', $data);
+		$this->load->view('admin/template/footer');	
+	}
+
+	public function pengeluaran($id)
+	{
+		$data['page'] = 'Pengeluaran (RKAS) K1';
+		$data['pengeluaran'] = $this->k1_model->getPengeluaran($id);
+		$data['sekolah'] = $this->sekolah_model->get_by_id($id);
+
+		$this->load->view('admin/template/header', $data);
+		$this->load->view('admin/rkask1/indexpengeluaran', $data);
+		$this->load->view('admin/template/footer');	
 	}
 
 
