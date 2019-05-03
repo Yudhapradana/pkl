@@ -66,10 +66,10 @@
               <p>RKAS K7</p>
             </a>
           </li>
-          <li class="nav-item <?php echo ($this->uri->segment(2) == 'dana') ? 'active':''; ?> ">
-            <a class="nav-link" href="<?php echo site_url('admin/dana')?>">
+          <li class="nav-item <?php echo ($this->uri->segment(2) == 'Form_K3') ? 'active':''; ?> ">
+            <a class="nav-link" href="<?php echo site_url('admin/Form_K3/index')?>">
               <i class="material-icons">content_paste</i>
-              <p>Laporan Dana</p>
+              <p>FORMULIR K3</p>
             </a>
           </li>
           <li class="nav-item <?php echo ($this->uri->segment(2) == 'jenissumberdana') ? 'active':''; ?> ">

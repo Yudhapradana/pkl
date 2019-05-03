@@ -71,17 +71,17 @@
               <p>RKAS K7</p>
             </a>
           </li>
-          <li class="nav-item <?php echo ($this->uri->segment(1) == 'sumberdana') ? 'active':''; ?>">
-            <a class="nav-link" href="<?php echo site_url('user/sumberdana') ?>">
+          <li class="nav-item <?php echo ($this->uri->segment(2) == 'form_k3/showMasuk') ? 'active':''; ?>">
+            <a class="nav-link" href="<?php echo site_url('user/form_k3/showMasuk') ?>">
               <i class="material-icons">content_paste</i>
               <!-- <i class="material-icons">assessment</i> -->
-              <p>Sumber Dana</p>
+              <p>Pemasukkan (K3)</p>
             </a>
           </li>
-          <li class="nav-item <?php echo ($this->uri->segment(1) == 'pengeluaran') ? 'active':''; ?>">
-            <a class="nav-link" href="<?php echo site_url('user/pengeluaran') ?>">
+          <li class="nav-item <?php echo ($this->uri->segment(1) == 'form_k3/showKeluar') ? 'active':''; ?>">
+            <a class="nav-link" href="<?php echo site_url('user/form_k3/showKeluar') ?>">
               <i class="material-icons">assessment</i>
-              <p>Pengeluaran</p>
+              <p>Pengeluaran (K3)</p>
             </a>
           </li>
           <li class="nav-item <?php echo ($this->uri->segment(1) == 'laporan') ? 'active':''; ?>">
