@@ -15,46 +15,41 @@
             <p class="card-category"></p>
           </div>
           <div class="card-body">
-            <?php foreach ($pengeluaran as $key): ?>
-              
-            
-            <form action="<?php base_url('pengeluaran/edit/'.$this->uri->segment(2)) ?>" method="post" enctype="multipart/form-data">
+            <form action="<?php base_url('user/k3/editKeluar/') ?>" method="post" enctype="multipart/form-data">
+
               <div class="form-group">
-                <label for="nama_pengeluaran">Nama Pengeluaran</label>
-                <input type="text" class="form-control" name="nama_pengeluaran" value="<?php echo $key->nama_pengeluaran ?>" required autofocus>
+                <label for="nama_kegiatan">Nama Pengeluaran</label>
+                <input type="text" class="form-control" name="nama_kegiatan" value="<?php echo $danaKeluar->nama_kegiatan ?>" required autofocus>
                 <div class="invalid-feedback">Masukkan nama pengeluaran.</div>
               </div>
 
-              <div class="row">
-                <div class="col-md-3">
-                  <div class="form-group">
-                    <label for="jenis_pengeluaran">Jenis Pengeluaran</label>
-                    <select class="custom-select form-control" name="jenis_pengeluaran" required onchange="if (this.selectedIndex==1){ document.getElementById('toko').style.display = 'inline' }else { document.getElementById('toko').style.display = 'none' };">
-                      <option selected hidden value="<?php echo $key->id_jenis_pengeluaran ?>"><?php echo $key->nama_jenis_pengeluaran ?></option>
-                      <?php foreach ($jenis_pengeluaran as $row): ?>
-                        <option value="<?php echo $row->id_jenis_pengeluaran ?>">
-                          <?php echo $row->nama_jenis_pengeluaran; ?>
-                        </option>
-                      <?php endforeach; ?>
-                    </select>
-                    <span id="toko" style="display:none;">
-                      <label>Nama Toko</label>
-                      <input type="text" name="toko" value="<?php echo $key->nama_toko ?>" class="form-control">
-                      </span>
-                    <div class="invalid-feedback">Pilih Jenis Pengeluaran</div>
-                  </div>
-                </div>
-              </div>
               <div class="form-group">
-                <label for="jumlah">Harga</label>
-                <input min="1000" class="form-control number" name="jumlah" value="<?php echo $key->jumlah ?>" required >
-                <div class="invalid-feedback">Masukkan Harga kendaraan.</div>
+                <label for="jenis_kegiatan">Jenis Pengeluaran: </label>
+                <select class="form-control" name="jenis_kegiatan">
+                  <option disabled selected hidden value="<?php echo $danaKeluar->jenis_kegiatan ?>"><?php echo $danaKeluar->jenis_kegiatan ?></option>
+                  <option value="pembayaran">Pembayaran</option>
+                  <option value="pembelian">Pembelian</option>
+                </select>
               </div>
+
+              <div class="form-group">
+                <label for="pengeluaran">Jumlah Pengeluaran</label>
+                <input min="1000" class="form-control number" name="pengeluaran" value="<?php echo $danaKeluar->pengeluaran ?>" required >
+                <div class="invalid-feedback">Masukkan Jumlah Pengeluaran</div>
+              </div>
+
               <div class="form-group">
                 <label for="tanggal">Tanggal</label>
-                <input type="date" class="form-control" name="tanggal" value="<?php echo $key->tanggal ?>" required >
+                <input type="date" class="form-control" name="tanggal" value="<?php echo $danaKeluar->tanggal ?>" required >
                 <div class="invalid-feedback">Masukkan Tanggal.</div>
               </div>
+
+              <div class="form-group">
+                <label for="nama_toko">Nama Toko</label>
+                <input type="text" class="form-control" name="nama_toko" value="<?php echo $danaKeluar->nama_toko ?>" placeholder="Wajib Diisi jika jenis Pengeluaran adalah Pembelian">
+                <div class="invalid-feedback">Masukkan nama toko.</div>
+              </div>
+
               <div class="form-group">
                 <label for="gambar">Bukti Transaksi</label>
               </div>
@@ -66,7 +61,6 @@
               <div class="form-group">
                 <input class="btn btn-info" type="submit" value="Simpan">
               </div>
-              <?php endforeach ?>
             </form>
           </div>
         </div>

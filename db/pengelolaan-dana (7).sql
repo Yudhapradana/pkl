@@ -63,7 +63,8 @@ CREATE TABLE `form_k3` (
   `id_dana_kegiatan` int(11) NOT NULL,
   `nama_kegiatan` varchar(255) NOT NULL,
   `jenis_kegiatan` enum('pemasukkan','pembayaran','pembelian','') NOT NULL,
-  `jumlah` int(11) NOT NULL,
+  `pemasukkan` int(11) NOT NULL DEFAULT '0',
+  `pengeluaran` int(11) NOT NULL DEFAULT '0',
   `nama_toko` varchar(100) NOT NULL,
   `tanggal` date NOT NULL,
   `id_sekolah` int(11) NOT NULL
@@ -73,10 +74,12 @@ CREATE TABLE `form_k3` (
 -- Dumping data for table `form_k3`
 --
 
-INSERT INTO `form_k3` (`id_dana_kegiatan`, `nama_kegiatan`, `jenis_kegiatan`, `jumlah`, `nama_toko`, `tanggal`, `id_sekolah`) VALUES
-(1, 'tes1', 'pemasukkan', 200000, '', '2019-04-03', 15),
-(2, 'tes2', 'pembayaran', 10000, '', '2019-04-02', 15),
-(3, 'tes3', 'pembelian', 140000, 'louise shop', '2019-04-01', 15);
+INSERT INTO `form_k3` (`id_dana_kegiatan`, `nama_kegiatan`, `jenis_kegiatan`, `pemasukkan`, `pengeluaran`, `nama_toko`, `tanggal`, `id_sekolah`) VALUES
+(1, 'BONAS Triuwal 1 Tahun 2018', 'pemasukkan', 200000000, 0, '', '2018-03-01', 15),
+(2, 'Fotocopy Ujian Sekolah', 'pembayaran', 0, 250000, '', '2018-02-06', 15),
+(3, 'tes3', 'pembelian', 0, 140000, 'louise shop', '2019-04-01', 15),
+(6, 'tes212', 'pembelian', 0, 220000, 'toko mantap djiwa', '2019-03-20', 15),
+(7, 'BOSDA Triwulan 1 Tahun 2018', 'pemasukkan', 165000000, 0, '', '2018-03-01', 15);
 
 -- --------------------------------------------------------
 

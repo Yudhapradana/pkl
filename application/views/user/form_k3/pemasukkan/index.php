@@ -9,10 +9,10 @@
               <p class="card-category">menampilkan sumber dana sekolah </p>
             </div>
             <div class="col-md-3">
-              <a href="<?php echo base_url('sumberdana/create/') ?>" rel="tooltip" title="Tambah" class="btn btn-primary">
+              <a href="<?php echo base_url('user/form_k3/createMasuk/') ?>" rel="tooltip" title="Tambah" class="btn btn-primary">
                 <i class="material-icons">add</i>
               </a>
-              <a href="<?php echo base_url('sumberdana/export/') ?>" rel="tooltip" title="Cetak Laporan" class="btn btn-primary">
+              <a href="<?php echo base_url('#') ?>" rel="tooltip" title="Cetak Laporan" class="btn btn-primary">
                 <i class="material-icons">print</i>
               </a>
             </div>
@@ -29,30 +29,27 @@
                   </th>
                   <th class="th-sm">Tanggal
                   </th>
-                  <th class="th-sm">Saldo Awal
+                  <th class="th-sm">Jumlah Pemasukkan
                   </th>
-                  <th class="th-sm">Saldo Akhir
-                  </th>
-                   <th class="th-sm">Aksi
+                  <th class="th-sm">Aksi
                   </th>                
                 </tr>
               </thead>
               <tbody>
-                <?php foreach ($sumberdana as $key => $value): ?>
+                <?php foreach ($pemasukkan as $key => $value): ?>
                   <tr>
                     <td><?php echo $key+1 ?></td>
-                    <td><?php echo $value->nama_pemasukkan ?></td>
+                    <td><?php echo $value->nama_kegiatan ?></td>
                     <td><?php echo date('d-m-Y',strtotime($value->tanggal)); ?></td>
-                    <td><?php echo $value->saldo_awal ?></td>
-                    <td><?php echo $value->jumlah ?></td>
+                    <td><?php echo $value->pemasukkan ?></td>
                     <td>
-                      <a href="#" onclick="openModal(<?php echo $value->id_sumber_dana; ?>)" rel="tooltip" title="Lihat" class="btn btn-sm btn-success">
+                      <!-- <a href="#" onclick="openModal(<?php echo $value->id_dana_kegiatan; ?>)" rel="tooltip" title="Lihat" class="btn btn-sm btn-success">
                         <i class="material-icons">zoom_out_map</i>
-                      </a>
-                      <a href="<?php echo base_url('sumberdana/edit/') . $value->id_sumber_dana ?>" rel="tooltip" title="Ubah" class="btn btn-sm btn-warning">
+                      </a> -->
+                      <a href="<?php echo base_url('user/form_k3/editMasuk/') . $value->id_dana_kegiatan ?>" rel="tooltip" title="Ubah" class="btn btn-sm btn-warning">
                         <i class="material-icons">edit</i>
                       </a>
-                      <a href="<?php echo base_url('sumberdana/delete/') . $value->id_sumber_dana ?>" rel="tooltip" title="Delete" class="btn btn-sm btn-danger">
+                      <a href="<?php echo base_url('user/form_k3/deleteMasuk/') . $value->id_dana_kegiatan ?>" rel="tooltip" title="Delete" class="btn btn-sm btn-danger">
                         <i class="material-icons">delete</i>
                       </a>
                     </td>
@@ -104,7 +101,7 @@
 <script type="text/javascript">
 function openModal(id) {
   $.ajax({
-    url:"<?php echo base_url('sumberdana/get/'); ?>"+id,
+    url:"<?php echo base_url('user/k3/getMasuk/'); ?>"+id,
     method: 'post',
     data:null
   }).done(function(data) {
